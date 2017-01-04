@@ -32,7 +32,7 @@ public class Shooting extends JFrame {
     
     void CreateContentpane() {
     	Contentpane = new JPanel();
-    	Contentpane.setBackground(Color.BLACK);
+    	Contentpane.setBackground(Color.GREEN);
     	Contentpane.setLayout(null);
         Contentpane.addKeyListener(new MyKeyListener());
         Contentpane.add(Chr);
@@ -40,7 +40,7 @@ public class Shooting extends JFrame {
     
     void CreateChr() {
     	Chr = new JLabel(new ImageIcon("images/haru2.png"));
-    	Chr.setLocation(50, 50);
+    	Chr.setLocation(-100, 150);
         Chr.setSize(460,260);
     }
  
@@ -49,16 +49,20 @@ public class Shooting extends JFrame {
             int keyCode = e.getKeyCode();
             switch (keyCode) {
             case KeyEvent.VK_UP:
-                Chr.setLocation(Chr.getX(), Chr.getY() - Moving);
+            	if(Chr.getY()>-60)
+            		Chr.setLocation(Chr.getX(), Chr.getY() - Moving);
                 break;
             case KeyEvent.VK_DOWN:
-                Chr.setLocation(Chr.getX(), Chr.getY() + Moving);
+            	if(Chr.getY()<360)
+            		Chr.setLocation(Chr.getX(), Chr.getY() + Moving);
                 break;
             case KeyEvent.VK_LEFT:
-                Chr.setLocation(Chr.getX() - Moving, Chr.getY());
+            	if(Chr.getX()>-130)
+            		Chr.setLocation(Chr.getX() - Moving, Chr.getY());
                 break;
             case KeyEvent.VK_RIGHT:
-                Chr.setLocation(Chr.getX() + Moving, Chr.getY());
+            	if(Chr.getX()<450)
+            		Chr.setLocation(Chr.getX() + Moving, Chr.getY());
                 break;
             }
         }
